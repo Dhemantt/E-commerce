@@ -6,7 +6,22 @@
     padding: 10px 20px;
     border-radius: 0.25rem;
     color: #fff;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
 }
+
+.addToCartBtn i {
+    margin-left: 10px;
+    font-size: 0.95rem;
+}
+
+.addToCartBtn:hover {
+    background-color: #000;
+}
+.addToCartBtn:active {
+    background-color: grey;
+}
+
 
 img {
     border-radius: 0.5rem;
@@ -23,14 +38,16 @@ img:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1.5rem;
 }
 
 .productsContainer {
+    padding: 1rem 0 2rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
-    gap: 1.2rem
+    gap: 1.5rem
 }
 
 .productsContainer>* {
@@ -48,6 +65,5 @@ h3 {
 
 h3 {
     font-style: italic;
-    font-weight: 100;
     margin-bottom: 1.25rem;
 }

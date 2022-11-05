@@ -1,9 +1,0 @@
-.cartButton {
-    font-size: 1.25rem;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    color: skyblue;
-    background-color: transparent;
-    border: 0.15rem solid skyblue;
-    justify-self: flex-end;
-}

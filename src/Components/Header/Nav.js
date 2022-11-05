@@ -3,12 +3,12 @@ import style from "./Nav.module.css";
 import CartButton from "./CartButton";
 const Nav = () => {
   return (
-    <nav>
+    <nav className={style.nav}>
       <div className={style.navWrapper}>
         <ul>
-          <li>HOME</li>
-          <li>STORE</li>
-          <li>ABOUT</li>
+          <li><a href='/home'>HOME</a></li>
+          <li><a href='/store'>STORE</a></li>
+          <li><a href='/about'>ABOUT</a></li>
         </ul>
         <CartButton />
       </div>

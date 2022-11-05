@@ -1,0 +1,25 @@
+.footer {
+    padding: 1rem 0;
+    background-color: #43b2de;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer h1 {
+    color: #fff;
+    font-size: 40px;
+}
+
+.footer .socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .socials a {
+    color: #fff;
+    margin-right: 1.5rem;
+}
+

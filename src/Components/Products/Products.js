@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Products.module.css";
 const Products = ({ productsList }) => {
-  console.log(productsList);
   const productsListUI = productsList.map((item) => {
     const { title, price, imageUrl } = item;
     return (
@@ -13,7 +12,12 @@ const Products = ({ productsList }) => {
 
         <div className={style.flexcontainer}>
           <div>Rs. {price}</div>
-          <button className={style.addToCartBtn}>Add</button>
+          <button className={style.addToCartBtn}>
+            Add to cart
+            <span>
+              <i className="fa-solid fa-cart-plus"></i>
+            </span>
+          </button>
         </div>
       </li>
     );
