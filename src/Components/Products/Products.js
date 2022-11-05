@@ -1,26 +1,9 @@
 import React from "react";
 import style from "./Products.module.css";
+import ProductDetails from "./ProductDetails";
 const Products = ({ productsList }) => {
   const productsListUI = productsList.map((item) => {
-    const { title, price, imageUrl } = item;
-    return (
-      <li key={new Date().getTime() + Math.random()}>
-        <h3>{title}</h3>
-        <div>
-          <img src={imageUrl} alt="product" />
-        </div>
-
-        <div className={style.flexcontainer}>
-          <div>Rs. {price}</div>
-          <button className={style.addToCartBtn}>
-            Add to cart
-            <span>
-              <i className="fa-solid fa-cart-plus"></i>
-            </span>
-          </button>
-        </div>
-      </li>
-    );
+    return <ProductDetails item={item} key={item.id} />;
   });
 
   return (

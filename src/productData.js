@@ -5,6 +5,7 @@ const productData = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+    id: "p123",
   },
 
   {
@@ -13,6 +14,7 @@ const productData = [
     price: 50,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+    id: "p345",
   },
 
   {
@@ -21,6 +23,7 @@ const productData = [
     price: 70,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+    id: "p567",
   },
 
   {
@@ -29,6 +32,7 @@ const productData = [
     price: 100,
 
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    id: "p189",
   },
 ];
-export default productData
+export default productData;

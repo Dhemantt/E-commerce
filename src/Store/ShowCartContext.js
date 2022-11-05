@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export const ShowCartContext = React.createContext({
   showCart: false,
@@ -10,8 +10,6 @@ export const ShowCartContextProvider = ({ children }) => {
   const toggleCart = () => {
     setShowCart((prevState) => !prevState);
   };
-
-  useEffect(() => console.log(showCart), [showCart]);
 
   return (
     <ShowCartContext.Provider value={{ showCart, toggleCart }}>

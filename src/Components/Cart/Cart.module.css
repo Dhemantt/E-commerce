@@ -7,8 +7,57 @@
     position: absolute;
     top: 100px;
     right: 1rem;
+    padding-bottom: 1.25rem;
 }
-.cart h2{
+
+.cart h1 {
     text-align: center;
+    text-transform: capitalize;
     margin-bottom: 1.2rem;
+}
+
+.cart .closeCartBtn {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.25rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.cart .closeCartBtn:hover {
+    color: crimson;
+    transform: scale(1.05)
+}
+
+.cart .closeCartBtn:active,
+.cart .closeCartBtn:focus {
+    transform: scale(1.05) rotate(360deg);
+}
+
+.cart .orderBtn {
+    display: block;
+    cursor: pointer;
+    padding: 0.25rem 1rem;
+    border-radius: 0.15rem;
+    border: 0.15rem solid #000;
+    font-weight: 600;
+    background-color: transparent;
+    margin: 0 auto
+}
+
+.cart .cartTotal {
+    display: flex;
+    color: grey;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-weight: 200;
+}
+
+.cart .cartTotal h2:nth-child(2) {
+    color: #000;
+    font-style: italic;
 }

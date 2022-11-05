@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,400&display=swap');
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+}
+
+.cartItem>* {
+    padding: 0.75rem 0;
+    justify-self: center;
+    align-self: center;
+}
+
+.cartItem .itemInfo {
+    width: 300px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.cartItem .itemInfo h4 {
+    font-weight: 400;
+    justify-self: start;
+    max-width: max-content;
+}
+
+.cartItem .itemInfo img {
+    width: 100px;
+    height: 100px;
+    justify-self: start;
+}
+
+.cartItem .price {
+    font-style: italic;
+}
+
+.cartItem .quantity {
+    padding: 0.5rem;
+}
+
+.cartItem .quantity input[type='number'] {
+    outline: none;
+    width: 50px;
+    border: 1.5px solid gray;
+    padding: 0.5rem;
+    border-radius: 0.35rem;
+}
+
+.cartItem .quantity input[type='number']:focus {
+    border: 1.5px solid #0f7ead;
+}
+
+.cartItem .btnDeleteItem,
+.cartItem .btnIncrementItem,
+.cartItem .btnDecrementItem {
+
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 10rem;
+    transition: all 0.5s ease-in;
+}
+
+.cartItem .btnDeleteItem:hover {
+    background-color: #b9133579;
+    color: #fff;
+}
+
+.cartItem .actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+}
+
+.btnIncrementItem:hover {
+    background-color: #0f7ead;
+    color: #fff;
+}
+
+.btnDecrementItem:hover {
+    background-color: #000;
+    color: #fff;
+}
