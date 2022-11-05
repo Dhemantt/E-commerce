@@ -1,0 +1,25 @@
+.navWrapper {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    background-color: #000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+li {
+    font-weight: 600;
+    padding: 10px 20px;
+}

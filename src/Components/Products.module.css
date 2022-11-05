@@ -1,0 +1,53 @@
+.addToCartBtn {
+    font-size: 1.15rem;
+    font-weight: 600;
+    border: 0;
+    background-color: #1485b1;
+    padding: 10px 20px;
+    border-radius: 0.25rem;
+    color: #fff;
+}
+
+img {
+    border-radius: 0.5rem;
+    box-shadow: 0px 5px 5px rgba(128, 128, 128, 0.656);
+    max-width: 100%;
+    transition: all 0.2s ease-in;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.flexcontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem
+}
+
+.productsContainer>* {
+    align-self: center;
+    justify-self: center;
+}
+
+
+h1,
+h3 {
+    max-width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h3 {
+    font-style: italic;
+    font-weight: 100;
+    margin-bottom: 1.25rem;
+}
