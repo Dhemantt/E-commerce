@@ -1,12 +1,10 @@
-
-
 .productsContainer {
     padding: 1rem 0 2rem 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
-    gap: 1.5rem
+    gap: 1.5rem;
 }
 
 .productsContainer>* {

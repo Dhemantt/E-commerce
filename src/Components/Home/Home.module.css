@@ -1,0 +1,49 @@
+.checkAlbums{
+    background-color: #0d1e2e;
+    padding-bottom: 40px;
+}
+.checkAlbums .btnGetAlbums{
+    background-color: transparent;
+    color: #fff;
+    font-size: 100px;
+    display: block;
+    margin: 1rem auto;
+}
+.tours{
+    min-height: 50vh;
+    padding: 1rem;
+    color: grey;
+}
+.tourItem {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+    padding: 0.9rem 0;
+}
+
+.tourItem > *{
+    justify-self: center;
+    align-self: center;
+}
+.tourdate {
+    font-weight: 600;
+}
+
+.tourplace{
+    font-size: 1.25rem;
+}
+
+.tourspecplace {
+    width: fit-content;
+    text-align: center;
+}
+
+.buyBtn {
+    background-color: #000;
+    color: #fff;
+    border:0;
+    border-radius: 0.35rem;
+    padding: .5rem .9rem;
+    cursor: pointer;
+}

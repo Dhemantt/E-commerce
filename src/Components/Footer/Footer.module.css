@@ -5,6 +5,7 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-content: space-between;
+    
 }
 
 .footer h1 {
@@ -22,4 +23,3 @@
     color: #fff;
     margin-right: 1.5rem;
 }
-

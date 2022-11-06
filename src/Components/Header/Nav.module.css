@@ -1,3 +1,12 @@
+.nav {
+    background-color: #000;
+    height: 80px;
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+}
+
 .navWrapper {
     width: 90%;
     max-width: 1200px;
@@ -8,9 +17,6 @@
     align-items: center;
 }
 
-.nav {
-    background-color: #000;
-}
 
 .nav ul {
     display: flex;

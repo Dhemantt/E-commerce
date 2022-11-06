@@ -1,9 +1,13 @@
 .banner{
-    
-    background-color: grey;
+    background-color: #0d1e2e;
     color: #fff;
+    margin-top: 70px;
 }
 .banner  h1{
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 2px;
     font-size: 80px;
     text-align: center;
     padding: 20px 0px 100px 0px;

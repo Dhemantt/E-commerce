@@ -1,5 +1,6 @@
 .about{
     padding: 1.5rem;
+    height: 70vh;
 }
 .about .aboutImage {
     width: 200px;
@@ -9,6 +10,8 @@
     transform: scale(0.9);
 }
 .aboutText{
+    font-size: 1.25rem;
+    color: grey;
     font-weight: 400;
     margin-left: 1rem;
     padding: 1rem;

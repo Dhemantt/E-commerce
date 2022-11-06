@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Nav.module.css";
 import CartButton from "./CartButton";
-import About from "../About/About";
 import { NavLink } from "react-router-dom";
 const Nav = () => {
   return (
