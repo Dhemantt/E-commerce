@@ -1,0 +1,16 @@
+.about{
+    padding: 1.5rem;
+}
+.about .aboutImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    float: left;
+    transform: scale(0.9);
+}
+.aboutText{
+    font-weight: 400;
+    margin-left: 1rem;
+    padding: 1rem;
+    line-height: 1.5;
+}
