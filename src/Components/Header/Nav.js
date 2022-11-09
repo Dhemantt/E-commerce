@@ -34,8 +34,17 @@ const Nav = () => {
                 color: isActive ? "cyan" : "white",
               })}
             >
-              {" "}
               ABOUT
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              style={({ isActive }) => ({
+                color: isActive ? "cyan" : "white",
+              })}
+            >
+              CONTACT
             </NavLink>
           </li>
         </ul>

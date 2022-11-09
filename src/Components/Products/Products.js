@@ -8,7 +8,7 @@ const Products = ({ productsList }) => {
 
   return (
     <>
-      <h1>Albums</h1>
+      <h1 style={{ marginTop: "20px" }}>Albums</h1>
       <ul className={style.productsContainer}>{productsListUI}</ul>
     </>
   );

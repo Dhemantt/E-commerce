@@ -10,6 +10,7 @@ import productData from "./productData";
 import { ShowCartContextProvider } from "./Store/ShowCartContext";
 import { CartContextProvider } from "./Store/CartContextProvider";
 import { Routes, Route } from "react-router-dom";
+import Contactus from "./Components/ContactUs/Contactus";
 function App() {
   return (
     <div className="App">
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contactus />} />
           <Route
             path="/store"
             element={<Products productsList={productData} />}
