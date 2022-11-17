@@ -1,12 +1,35 @@
 import React, { useState } from "react";
 import style from "./ContactForm.module.css";
-const ContactFrom = () => {
+const ContactForm = () => {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
-  const [contact, setcontact] = useState(new Date());
+  const [contact, setcontact] = useState("");
 
-  const handleSubmit = (formInputs) => {
-    console.log(formInputs);
+  const handleSubmit = async (formInputs) => {
+    try {
+      const res = await fetch(
+        "https://generics-store-default-rtdb.firebaseio.com/contacters.json",
+        {
+          mode: "cors",
+          method: "post",
+          body: JSON.stringify({
+            name,
+            email,
+            contact,
+          }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error("Bad request");
+      } else {
+        setname("");
+        setemail("");
+        setcontact("");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -49,9 +72,8 @@ const ContactFrom = () => {
           <label htmlFor="contact">Contact</label>
           <input
             value={contact}
-            type="number"
-            min="0"
-            max="9"
+            type="tel"
+            pattern="^[0-9]{10}"
             id="contact"
             className={style.contact}
             onChange={(e) => {
@@ -69,4 +91,4 @@ const ContactFrom = () => {
   );
 };
 
-export default ContactFrom;
+export default ContactForm;

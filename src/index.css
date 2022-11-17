@@ -7,14 +7,16 @@
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
 }
-
+.app{
+  color: #0d1e2e;
+}
 ul {
   list-style: none;
 }
 
 a {
-  color: skyblue;
+  color: rgb(255, 255, 255);
 }

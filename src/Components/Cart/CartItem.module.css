@@ -7,7 +7,8 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-
+    margin: 0.5rem 0;
+    border: 1px solid #8080804a;
 }
 
 .cartItem>* {
@@ -35,11 +36,12 @@
 .cartItem .itemInfo img {
     width: 100px;
     height: 100px;
-    justify-self: start;
+    object-fit: contain;
+    justify-self: start;    
 }
 
 .cartItem .price {
-    font-style: italic;
+    font-weight: 600;
 }
 
 .cartItem .quantity {
@@ -54,8 +56,10 @@
     border-radius: 0.35rem;
 }
 
-.cartItem .quantity input[type='number']:focus {
-    border: 1.5px solid #0f7ead;
+.cartItem .quantity input[type='number']:hover {
+    cursor: pointer;
+    border: 2.5px solid #393f4215;
+    background-color: rgba(57, 63, 66, 0.18);
 }
 
 .cartItem .btnDeleteItem,

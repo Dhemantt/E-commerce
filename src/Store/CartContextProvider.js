@@ -1,45 +1,51 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
+import { saveCartInServer } from "../CartHelpers/FetchHelpers";
 import { CartContext } from "./CartContext";
-
-const initialCartState = {
-  cartItems: [],
-  totalAmount: 0,
-};
 const cartReducer = (state, action) => {
   const { type } = action;
-  if (type === "addItem") {
-    let updatedItems = [];
+  let updatedItems = [];
+  let updatedTotalAmount = 0;
 
-    const itemExists = state.cartItems.find(
-      (item) => item.id === action.item.id
-    );
-    if (itemExists) {
-      itemExists.amount += 1;
-      updatedItems = [...state.cartItems];
-    } else {
-      updatedItems = [...state.cartItems, action.item];
-    }
-
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
-
+  if (type === "clearItems") {
+    console.log("inside clear items");
     return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
+  }
+
+  if (type === "getCartFromLocalStorage") {
+    return action.cart;
+  }
+  if (type === "addItem") {
+    // Item adder
+    updatedItems = [];
+    const item = state.cartItems.find((item) => item.id === action.item.id);
+    if (!item) {
+      // item not in cart, add the item
+      updatedItems = [...state.cartItems, action.item];
+    } else {
+      // update the quantity by 1
+      item.amount += 1;
+
+      // filter out other items
+      const otherItems = state.cartItems.filter(
+        (item) => item.id !== action.item.id
+      );
+      updatedItems = [...otherItems, item];
+    }
+    updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
   }
 
   if (type === "delItem") {
-    const updatedItems = state.cartItems.filter(
-      (item) => action.id !== item.id
-    );
+    updatedItems = state.cartItems.filter((item) => action.id !== item.id);
 
-    let updatedTotalAmount = 0;
+    updatedTotalAmount = 0;
     for (let i = 0; i < updatedItems.length; i++) {
       updatedTotalAmount += updatedItems[i].price * updatedItems[i].amount;
     }
-    return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
   }
 
   if (type === "changeAmount") {
-    const updatedItems = state.cartItems.map((item, idx) => {
+    updatedItems = state.cartItems.map((item, idx) => {
       if (action.id === item.id) {
         const newAmt = +action.amt;
         return { ...item, amount: newAmt };
@@ -47,27 +53,48 @@ const cartReducer = (state, action) => {
     });
     const targetItem = state.cartItems.find((item) => action.id === item.id);
 
-    const updatedTotalAmount =
+    updatedTotalAmount =
       state.totalAmount -
       targetItem.price * targetItem.amount +
       targetItem.price * action.amt;
-
-    console.log(action.amt);
-    return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
   }
+
+  return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
 };
 
 export const CartContextProvider = ({ children }) => {
+  const initialCartState = {
+    cartItems: [],
+    totalAmount: 0,
+  };
   const [cartState, dispatchCartAction] = useReducer(
     cartReducer,
     initialCartState
   );
+
   useEffect(() => {
-    console.log(` Total amount 💲: ${cartState.totalAmount}`);
-    console.log("Total items in cart🛒:", cartState.cartItems);
+    dispatchCartAction({
+      type: "getCartFromLocalStorage",
+      cart: JSON.parse(localStorage.getItem("CART-USER")),
+    });
+  }, []);
+
+  useEffect(() => {
+    // save to local storage
+    localStorage.setItem("CART-USER", JSON.stringify(cartState));
+    console.log(cartState);
+
+    let t = setTimeout(() => {
+      console.log("Save to cart fired");
+
+      if (JSON.parse(localStorage.getItem("auth"))) saveCartInServer();
+    }, 20000);
+
+    return () => clearTimeout(t);
   }, [cartState]);
 
   const addItemHandler = (newItem) => {
+    console.log(newItem);
     dispatchCartAction({
       type: "addItem",
       item: newItem,
@@ -81,11 +108,16 @@ export const CartContextProvider = ({ children }) => {
   };
 
   const amountChangeHandler = (amt, id) => {
-    console.log(id, amt);
     dispatchCartAction({
       type: "changeAmount",
       id: id,
       amt: amt,
+    });
+  };
+
+  const clearCartItems = () => {
+    dispatchCartAction({
+      type: "clearItems",
     });
   };
 
@@ -95,6 +127,7 @@ export const CartContextProvider = ({ children }) => {
     addItem: addItemHandler,
     delItem: delItemHandler,
     amountChangeHandler: amountChangeHandler,
+    clearCart: clearCartItems,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
