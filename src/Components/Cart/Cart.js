@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import style from "./Cart.module.css";
 import CartItems from "./CartItems";
 import { CartContext } from "../../Store/CartContext";
@@ -15,7 +15,7 @@ const Cart = () => {
               padding: "0.5rem 1.22rem",
               minWidth: "400px",
               color: "grey",
-              fontSize: "50px",
+              fontSize: "40px",
               textAlign: "center",
             }}
           >

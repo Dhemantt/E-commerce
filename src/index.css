@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
+  background-image: url('../public/svgBg.svg');
 }
 .app{
   color: #0d1e2e;

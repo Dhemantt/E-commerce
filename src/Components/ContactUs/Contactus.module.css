@@ -1,11 +1,12 @@
 .contactUs {
+    background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     color: #6e7376b7;
     padding: 20px 40px;
-    min-height: 80vh;
+    min-height: 100vh;
     padding: 70px 40px;
 }
 

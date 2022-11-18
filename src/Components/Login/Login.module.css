@@ -6,11 +6,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
 .authForm {
+    background-color: rgba(231, 239, 238, 0.852);
     width: 350px;
-    border: 1.25px solid rgba(46, 35, 35, 0.167);
+    border-radius: 0.36rem;
     box-shadow: 0px 2px 5px #8080805b;
     transform: scale(0.8);
 }
@@ -136,6 +138,5 @@
 .header {
     padding-top: 40px;
     font-weight: 400;
-    background-color: #fff;
-    color: #616466cc;
+    color: #3d4444cc;
 }

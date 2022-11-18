@@ -16,8 +16,8 @@ const Nav = () => {
               id="navlink"
               to="/"
               style={({ isActive }) => ({
-                color: isActive ? "#5d646c" : "white",
-                border: isActive ? "0.15rem solid #5d646c" : "0",
+                color: isActive ? "#fff" : "white",
+                border: isActive ? "0.15rem solid #fff" : "0",
               })}
             >
               HOME
@@ -29,8 +29,8 @@ const Nav = () => {
               id="navlink"
               to="/products"
               style={({ isActive }) => ({
-                color: isActive ? "#5d646c" : "white",
-                border: isActive ? "0.15rem solid #5d646c" : "0",
+                color: isActive ? "#fff" : "white",
+                border: isActive ? "0.15rem solid #fff" : "0",
               })}
             >
               PRODUCTS
@@ -42,8 +42,8 @@ const Nav = () => {
               id="navlink"
               to="/about"
               style={({ isActive }) => ({
-                color: isActive ? "#5d646c" : "white",
-                border: isActive ? "0.15rem solid #5d646c" : "0",
+                color: isActive ? "#fff" : "white",
+                border: isActive ? "0.15rem solid #fff" : "0",
               })}
             >
               ABOUT
@@ -54,8 +54,8 @@ const Nav = () => {
               id="navlink"
               to="/contact"
               style={({ isActive }) => ({
-                color: isActive ? "#5d646c" : "white",
-                border: isActive ? "0.15rem solid #5d646c" : "0",
+                color: isActive ? "#fff" : "white",
+                border: isActive ? "0.15rem solid #fff" : "0",
               })}
             >
               CONTACT
@@ -67,8 +67,8 @@ const Nav = () => {
                 id="navlink"
                 to="/login"
                 style={({ isActive }) => ({
-                  color: isActive ? "#5d646c" : "white",
-                  border: isActive ? "0.15rem solid #5d646c" : "0",
+                  color: isActive ? "#fff" : "white",
+                  border: isActive ? "0.15rem solid #fff" : "0",
                 })}
               >
                 LOGIN
@@ -88,8 +88,8 @@ const Nav = () => {
                 }}
                 to="/login"
                 style={({ isActive }) => ({
-                  color: isActive ? "#5d646c" : "white",
-                  border: isActive ? "0.15rem solid #5d646c" : "0",
+                  color: isActive ? "#fff" : "white",
+                  border: isActive ? "0.15rem solid #fff" : "0",
                 })}
               >
                 LOGOUT
@@ -97,15 +97,19 @@ const Nav = () => {
             </li>
           )}
           {isLoggedIn && (
-            <li className={style.cartButtonTopRight}>
-              <i class="fa-solid fa-cart-shopping"></i>
-              <NavLink id="navlink" to="/cart">
+            <li>
+              <NavLink
+                className={style.cartButtonTopRight}
+                id="navlink"
+                to="/cart"
+              >
+                <i className="fa-solid fa-cart-shopping"></i>
                 CART
               </NavLink>
             </li>
           )}
         </ul>
-        {isLoggedIn && <p className={style.username}>Welcome, {email}</p>}
+        {isLoggedIn && <p className={style.username}><span>Welcome,</span> {email}</p>}
       </div>
     </nav>
   );

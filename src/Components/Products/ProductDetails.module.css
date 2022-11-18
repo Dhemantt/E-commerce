@@ -1,5 +1,6 @@
 .productDetailsOuterContainer {
     padding-top: 100px;
+    
 }
 
 .productDetaisInnerContainer {
@@ -16,19 +17,22 @@
 
 .productMain {
     align-self: start;
+    
 }
 
 .productImageContainer {
-    background-color: rgba(227, 237, 236, 0.291);
+    background-color: #fff;
+    border-radius: 0.25rem;
     padding: 0.25rem 0;
     width: 100%;
     display: flex;
     justify-content: center;
     border-bottom: 1px solid rgba(0, 0, 0, 0.046);
-
+    box-shadow: 0px 2px 5px #ffffff61;
 }
 
 .productImage {
+    background-color: #fff;
     width: 200px;
     height: 300px;
     object-fit: contain;
@@ -66,11 +70,11 @@
     text-decoration: underline;
     font-size: 0.72rem;
     font-weight: bold;
-    color: grey;
+    color: #2d2a2a;
 }
 .productName {
     font-size: 20px;
-    color: #858487;
+    color: #3d3b41;
 }
 
 .productPrice {
@@ -80,7 +84,7 @@
 
 .productDescription {
     line-height: 1.6;
-    color: grey;
+    color: rgb(38, 33, 33);
 }
 
 .productImageLinks {
@@ -114,7 +118,7 @@
 .prodSpecs,
 .reviews {
     line-height: 1.6;
-    color: grey;
+    color: rgb(28, 43, 47);
     margin: 20px auto !important;
     width: 90%;
     max-width: 1200px;
@@ -133,7 +137,7 @@
 }
 
 .reviewDetails {
-    background-color: rgba(128, 128, 128, 0.071);
+    background-color: rgba(236, 245, 243, 0.999);
     border: 1.8px solid #8080803d;
     border-radius: 0.25rem;
     padding: 0.35rem 0.5rem;

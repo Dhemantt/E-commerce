@@ -4,7 +4,7 @@ const getEmail = () => {
   const authDetails = JSON.parse(localStorage.getItem("auth"));
   return authDetails?.email;
 };
-const END_POINT__ = `edb915c3148e4085a1db0e7e7b13b28e`;
+const END_POINT__ = `5a9d4c1749cf4745be01007ea25612c2`;
 let URL = "";
 export const saveCartInServer = async (cart) => {
   const email = getEmail();

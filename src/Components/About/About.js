@@ -35,7 +35,7 @@ const About = () => {
         will never be the trouble and they are refused to the pleasures and the
         pleasures of the pain, explain the treatment of excepturi of the blessed
         sufferings.<br></br>
-        <p style={{marginTop: '50px'}}>
+        <p style={{margin: '50px auto 100px auto'}}>
           I never said will unfold in him receives at another time he may please
           the one that those works, we are less than they, this refused to the
           pleasures of deleniti? Those are! Will unfold in times of pleasure,
