@@ -1,16 +1,18 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../Store/AuthContext";
 import style from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "./saveAuthInLocalStorage";
-import { getCartFromServer } from "../../CartHelpers/FetchHelpers";
+
 const Login = () => {
+  
   const { isLoggedIn, login } = useContext(AuthContext);
   const [isLogin, setIsLogin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [responseError, setResponseError] = useState(false);
   const [isLoading, setisLoading] = useState(false);
+  const emailRef = useRef();
 
   const navigate = useNavigate();
   const switchAuthHandler = (e) => {
@@ -45,12 +47,8 @@ const Login = () => {
         //save idToken in context
         login(data.idToken, data.email);
 
-        // save auth details in local storage
+        // to save auth details in localStorage
         saveToLocalStorage(data);
-
-        console.log(email);
-        // get cart from server
-        getCartFromServer(email);
       } else if (!res.ok) {
         // Some Authenication error happened
         throw new Error("Auth failed");
@@ -73,6 +71,7 @@ const Login = () => {
         <div className={style.formControl}>
           <label htmlFor="email">Email</label>
           <input
+            ref={emailRef}
             value={email}
             type="email"
             id="email"

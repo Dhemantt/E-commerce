@@ -3,11 +3,9 @@ import style from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Store/AuthContext";
 import { deleteFromLocalStorage } from "../Login/saveAuthInLocalStorage";
-import { saveCartInServer } from "../../CartHelpers/FetchHelpers";
-import { CartContext } from "../../Store/CartContext";
+
 const Nav = () => {
   const { isLoggedIn, logout, email } = useContext(AuthContext);
-  const { clearCart } = useContext(CartContext);
 
   return (
     <nav className={style.nav}>
@@ -16,7 +14,7 @@ const Nav = () => {
           <li>
             <NavLink
               id="navlink"
-              to="/home"
+              to="/"
               style={({ isActive }) => ({
                 color: isActive ? "#5d646c" : "white",
                 border: isActive ? "0.15rem solid #5d646c" : "0",
@@ -85,19 +83,8 @@ const Nav = () => {
                   // clear idToken from context
                   logout();
 
-                  saveCartInServer();
-
                   // clear 'auth' from localStorage
                   deleteFromLocalStorage();
-
-                  // clear CART from local storage
-                  try {
-                    localStorage.removeItem("CART-USER");
-                  } catch (err) {
-                    console.log(err);
-                  }
-
-                  clearCart();
                 }}
                 to="/login"
                 style={({ isActive }) => ({
@@ -110,15 +97,9 @@ const Nav = () => {
             </li>
           )}
           {isLoggedIn && (
-            <li>
-              <NavLink
-                id="navlink"
-                to="/cart"
-                style={({ isActive }) => ({
-                  color: isActive ? "#5d646c" : "white",
-                  border: isActive ? "0.15rem solid #5d646c" : "0",
-                })}
-              >
+            <li className={style.cartButtonTopRight}>
+              <i class="fa-solid fa-cart-shopping"></i>
+              <NavLink id="navlink" to="/cart">
                 CART
               </NavLink>
             </li>

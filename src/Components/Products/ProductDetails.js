@@ -40,7 +40,6 @@ const ProductDetails = () => {
       price: Number(prodDetails.price),
       name: prodDetails.name,
     };
-    console.log(item);
 
     // To update cart state
     addItem(item);

@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import style from "./Cart.module.css";
 import CartItems from "./CartItems";
-
 import { CartContext } from "../../Store/CartContext";
+
 const Cart = () => {
   const { cartItems, totalAmount } = useContext(CartContext);
-
-  console.log(`CartItems`,cartItems);
-  console.log('Total Amount',totalAmount);
 
   return (
     <>

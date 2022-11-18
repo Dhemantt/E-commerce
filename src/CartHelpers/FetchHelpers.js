@@ -1,55 +1,54 @@
 import axios from "axios";
 
-const getCart = () => {
-  const cart = JSON.parse(localStorage.getItem("CART-USER"));
-  return cart;
-};
-
 const getEmail = () => {
   const authDetails = JSON.parse(localStorage.getItem("auth"));
   return authDetails?.email;
 };
-const END_POINT__ = `e06c7348d347487084b553ac9e9415fc`;
+const END_POINT__ = `edb915c3148e4085a1db0e7e7b13b28e`;
+let URL = "";
+export const saveCartInServer = async (cart) => {
+  const email = getEmail();
 
-export const saveCartInServer = async () => {
-  let URL = `https://crudcrud.com/api/${END_POINT__}/${getEmail().replace(
-    /[^a-zA-Z0-9 ]/g,
-    ""
-  )}`;
-  const cart = getCart();
-  console.log("requesting to :", URL);
+  try {
+    if (!email) throw new Error("User is not logged in🏴");
+    URL = `https://crudcrud.com/api/${END_POINT__}/${email.replace(
+      /[^a-zA-Z0-9 ]/g,
+      ""
+    )}`;
+  } catch (error) {
+    console.log(error);
+  }
 
   let res = null;
   try {
     res = await axios.get(URL);
 
     if (res.data.length > 0) {
-      console.log("PUT SUCCESS TO URL: ", URL + "/" + res.data[0]._id);
-      res = await axios.put(URL + `/${res.data[0]._id}`, { cart });
+      res = await axios.put(URL + `/${res.data[0]._id}`, cart);
     } else {
-      console.log("POST SUCCESS TO URL: ", URL + "/");
-      res = await axios.post(URL, { cart });
+      res = await axios.post(URL, cart);
     }
   } catch (error) {
     console.log(error);
   }
 };
-
-export const getCartFromServer = async (email) => {
-  let URL = `https://crudcrud.com/api/${END_POINT__}/${email.replace(
-    /[^a-zA-Z0-9 ]/g,
-    ""
-  )}`;
+export const getCartFromServer = async () => {
+  const email = getEmail();
+  try {
+    if (!email) throw new Error({msg: "User is not logged in🏴"});
+    URL = `https://crudcrud.com/api/${END_POINT__}/${email.replace(
+      /[^a-zA-Z0-9 ]/g,
+      ""
+    )}`;
+  } catch (error) {
+    console.log(error.msg);
+  }
 
   let res = null;
   try {
     res = await axios.get(URL);
-    console.log("requesting to :", URL + `/${res.data[0]._id}`);
     res = await axios.get(URL + `/${res.data[0]._id}`);
-    console.log(res);
-
-    localStorage.setItem("CART-USER", JSON.stringify(res.data.cart));
-    console.log(res.data.cart);
+    return res.data;
   } catch (error) {
     console.log(error);
   }

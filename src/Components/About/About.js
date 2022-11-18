@@ -6,7 +6,7 @@ const About = () => {
       <div className={style.aboutImgContainer}>
         <img className={style.aboutImage} src="/hero.JPG" alt="about" />
       </div>
-      <p className={style.aboutText}>
+      <div className={style.aboutText}>
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
         sorrows, hates no prosecutors will unfold in the enduring of which were
         born in it? Often leads smallest mistake some pain main responsibilities
@@ -50,7 +50,7 @@ const About = () => {
           hardships of the life of harsh condemn, we are accusing him? Him whom
           something large cisterns.
         </p>
-      </p>
+      </div>
     </div>
   );
 };

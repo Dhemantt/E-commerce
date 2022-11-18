@@ -1,25 +1,32 @@
-import React, { useReducer, useEffect, useState } from "react";
-import { saveCartInServer } from "../CartHelpers/FetchHelpers";
+import React, { useReducer, useEffect, useContext } from "react";
+import {
+  saveCartInServer,
+  getCartFromServer,
+} from "../CartHelpers/FetchHelpers";
 import { CartContext } from "./CartContext";
+import { AuthContext } from "./AuthContext";
+
 const cartReducer = (state, action) => {
   const { type } = action;
   let updatedItems = [];
   let updatedTotalAmount = 0;
 
   if (type === "clearItems") {
-    console.log("inside clear items");
     return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
   }
 
-  if (type === "getCartFromLocalStorage") {
-    return action.cart;
+  if (type === "fetchCart") {
+    console.log(action.cart);
+    if (action.cart) return action.cart;
+    else return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
   }
+
   if (type === "addItem") {
-    // Item adder
+    // action:add item
     updatedItems = [];
     const item = state.cartItems.find((item) => item.id === action.item.id);
     if (!item) {
-      // item not in cart, add the item
+      // if item not in cart, add the item
       updatedItems = [...state.cartItems, action.item];
     } else {
       // update the quantity by 1
@@ -29,12 +36,13 @@ const cartReducer = (state, action) => {
       const otherItems = state.cartItems.filter(
         (item) => item.id !== action.item.id
       );
+      // update cartItems with updated quantity of the product
       updatedItems = [...otherItems, item];
     }
     updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
   }
-
+  // action: delete item
   if (type === "delItem") {
     updatedItems = state.cartItems.filter((item) => action.id !== item.id);
 
@@ -44,6 +52,7 @@ const cartReducer = (state, action) => {
     }
   }
 
+  // action: change quantity
   if (type === "changeAmount") {
     updatedItems = state.cartItems.map((item, idx) => {
       if (action.id === item.id) {
@@ -71,30 +80,45 @@ export const CartContextProvider = ({ children }) => {
     cartReducer,
     initialCartState
   );
+  const { isLoggedIn } = useContext(AuthContext);
+
+  // fetch cart when the users logs in/
+  useEffect(() => {
+    getCartFromServer()
+      .then((cartFromServer) => {
+        console.log("🙋‍♀️", cartFromServer);
+        fetchCartFromServer({
+          cartItems: cartFromServer.cartItems,
+          totalAmount: cartFromServer.totalAmount,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isLoggedIn]);
 
   useEffect(() => {
-    dispatchCartAction({
-      type: "getCartFromLocalStorage",
-      cart: JSON.parse(localStorage.getItem("CART-USER")),
-    });
-  }, []);
-
-  useEffect(() => {
-    // save to local storage
-    localStorage.setItem("CART-USER", JSON.stringify(cartState));
-    console.log(cartState);
-
+    //save cart details to server on every cartState change
+    // after 1sec to reduce requests
     let t = setTimeout(() => {
-      console.log("Save to cart fired");
-
-      if (JSON.parse(localStorage.getItem("auth"))) saveCartInServer();
-    }, 20000);
+      if (localStorage.getItem("auth")) {
+        saveCartInServer(cartState);
+      }
+    }, 1000);
 
     return () => clearTimeout(t);
   }, [cartState]);
 
+  // cartState Handlers
+
+  const fetchCartFromServer = (cart) => {
+    dispatchCartAction({
+      type: "fetchCart",
+      cart: cart,
+    });
+  };
+
   const addItemHandler = (newItem) => {
-    console.log(newItem);
     dispatchCartAction({
       type: "addItem",
       item: newItem,
@@ -128,6 +152,7 @@ export const CartContextProvider = ({ children }) => {
     delItem: delItemHandler,
     amountChangeHandler: amountChangeHandler,
     clearCart: clearCartItems,
+    fetchCartFromServer: fetchCartFromServer,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>

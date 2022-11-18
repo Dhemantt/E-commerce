@@ -26,6 +26,7 @@
 }
 
 .productImageContainer {
+    height: 150px;
     background-color: rgba(227, 237, 236, 0.291);
     padding: 0.25rem 0;
     width: 100%;
@@ -36,7 +37,7 @@
 
 .productImage {
     width: 200px;
-    height: 200px;
+    height: 120px;
     object-fit: contain;
 }
 
@@ -45,6 +46,7 @@
 }
 
 .productName {
+    font-weight: 100;
     font-size: 1rem;
     color: #858487;
     max-height: 25px;
@@ -56,18 +58,19 @@
 }
 
 .btnView {
+    font-size: 0.7rem;
     display: block;
     text-decoration: none;
     text-align: center;
     margin: 0px auto;
     width: 100%;
-    background-color: #000;
+    background-color: #2c3039;
     color: #fff;
-    padding: 1rem;
+    padding: 0.25rem;
     cursor: pointer;
     transition: all 0.35s ease-in;
 }
 
 .btnView:hover {
-    background-color: #11111ed2;
+    background-color: #2b2b43d2;
 }

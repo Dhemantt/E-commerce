@@ -13,14 +13,14 @@ import Login from "./Components/Login/Login";
 
 
 function App() {
- 
+  
   return (
     <div className="app">
       <CartContextProvider>
         <Nav />
         <main>
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contactus />} />
             <Route path="/products/" element={<Products />} />
