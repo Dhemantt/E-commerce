@@ -17,7 +17,7 @@ const ProductDetails = () => {
   const fetchProductDetails = async () => {
     try {
       const res = await fetch(
-        `https://generics-store-default-rtdb.firebaseio.com/products/${productId}.json`,
+        `https://ecommerce-storage-740cc-default-rtdb.firebaseio.com/product/${productId}.json`,
         {
           mode: "cors",
           method: "get",
@@ -100,6 +100,7 @@ const ProductDetails = () => {
               </div>
               <div className={style.productImageLinks}>
                 {prodDetails.images.map((el) => {
+                  console.log(el)
                   return (
                     <button
                       key={el}

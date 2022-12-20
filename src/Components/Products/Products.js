@@ -11,13 +11,14 @@ const Products = () => {
   const fetchProducts = async () => {
     try {
       const res = await fetch(
-        "https://generics-store-default-rtdb.firebaseio.com/products.json",
+        "https://ecommerce-storage-740cc-default-rtdb.firebaseio.com/product.json",
         {
           mode: "cors",
           method: "get",
         }
       );
       const products = await res.json();
+      console.log(products)
       let productListArray = [];
       for (const [key, value] of Object.entries(products)) {
         productListArray.push({ ...value, prodId: key });

@@ -20,7 +20,7 @@ const Login = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const API_KEY = "AIzaSyB8f_2ik6_vbAC9lLs7UHfYTzxkhR2UcW8";
+    const API_KEY = "AIzaSyCsPlaQrg2Tt19EYvZ5YpErk16-WGwNM28";
 
     const OPTION = isLogin ? "signInWithPassword" : "signUp";
 

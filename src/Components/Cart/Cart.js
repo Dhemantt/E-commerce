@@ -5,7 +5,7 @@ import { CartContext } from "../../Store/CartContext";
 
 const Cart = () => {
   const { cartItems, totalAmount } = useContext(CartContext);
-
+ 
   return (
     <>
       <div className={style.cart}>

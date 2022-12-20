@@ -20,7 +20,7 @@ const cartReducer = (state, action) => {
     if (action.cart) return action.cart;
     else return { cartItems: updatedItems, totalAmount: updatedTotalAmount };
   }
-
+ 
   if (type === "addItem") {
     // action:add item
     updatedItems = [];

@@ -2,13 +2,14 @@ import axios from "axios";
 
 const getEmail = () => {
   const authDetails = JSON.parse(localStorage.getItem("auth"));
+  console.log(authDetails)
   return authDetails?.email;
 };
-const END_POINT__ = `5a9d4c1749cf4745be01007ea25612c2`;
+const END_POINT__ = `32b8a89bad824cceb4a6cc3bec6bdb27`;
 let URL = "";
 export const saveCartInServer = async (cart) => {
   const email = getEmail();
-
+console.log(email)
   try {
     if (!email) throw new Error("User is not logged in🏴");
     URL = `https://crudcrud.com/api/${END_POINT__}/${email.replace(
